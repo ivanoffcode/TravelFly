@@ -27,7 +27,13 @@ public class RouteServiceImpl implements RouteService {
     public List<RouteResponse> getAllRoutes(String origin, String destination, Integer maxFlights) {
         List<RouteResponse> result = new ArrayList<>();
         dfs(origin, destination, new ArrayList<>(), 0, result, new HashSet<>(), maxFlights);
-        result.sort(Comparator.comparingInt(RouteResponse::getPrice));
+        if (result.size() > 1) {
+            result.sort((r1, r2) -> {
+                if (r1.getPrice() > r2.getPrice()) return 1;
+                if (r1.getPrice() < r2.getPrice()) return -1;
+                return 0;
+            });
+        }
         return result;
     }
 
