@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Flight {
 
-    private String originDestination;
+    private String destination;
 
     private int price;
 

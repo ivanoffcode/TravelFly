@@ -42,8 +42,8 @@ public class RouteServiceImpl implements RouteService {
         } else if (flightMap.containsKey(current)) {
             if (maxFlights == null || path.size() - 1 < maxFlights) {
                 for (Flight flight : flightMap.get(current)) {
-                    if (!visited.contains(flight.getOriginDestination())) {
-                        dfs(flight.getOriginDestination(), destination, path, cost + flight.getPrice(),
+                    if (!visited.contains(flight.getDestination())) {
+                        dfs(flight.getDestination(), destination, path, cost + flight.getPrice(),
                                 result, visited, maxFlights);
                     }
                 }
